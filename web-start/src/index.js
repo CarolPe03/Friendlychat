@@ -57,16 +57,15 @@ function initFirebaseAuth() {
 function getProfilePicUrl() {
   return getAuth().currentUser.photoURL || '/images/profile_placeholder.png';
 }
-
+function getUserName() {
+  return getAuth().currentUser.displayName;
+}
 // Returns true if a user is signed-in.
 function isUserSignedIn() {
   return !!getAuth().currentUser;
 }
 
-// Returns true if a user is signed-in.
-function isUserSignedIn() {
-  return !!getAuth().currentUser;
-}
+
 
 // Saves a new message on the Cloud Firestore.
 // Saves a new message to Cloud Firestore.
@@ -420,6 +419,8 @@ mediaCaptureElement.addEventListener('change', onMediaFileSelected);
 const firebaseApp = initializeApp(getFirebaseConfig());
 const firebaseAppConfig = getFirebaseConfig();
 initializeApp(firebaseAppConfig);
-getPerformance();
+
 initFirebaseAuth();
 loadMessages();
+// TODO: Enable Firebase Performance Monitoring.
+getPerformance();
